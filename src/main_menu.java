@@ -4,7 +4,7 @@ public class main_menu {
     private String input;
 
     public main_menu(){
-        input = "";
+        input = "2 4 6 * +";
     }
 
     private void printMenu(){
@@ -23,6 +23,22 @@ public class main_menu {
         var infix = getter.nextLine();
         input = infix;
         System.out.print("YOU HAVE ENTERED: " +input+ "\n");
+        convertToPostfix();
+    }
+
+    public void convertToPostfix(){
+        LinkStack theStack = new LinkStack();
+        var x = input.split(" ");
+        for(var elm:x){
+            //System.out.print(elm+"\n");
+            if(elm.matches("[()=;{}[\\]+\\-*/&!%^|<>']]")){
+                System.out.print(elm);
+            }
+            else(){
+
+            }
+        }
+
     }
 
     public void evalPostfix(){
