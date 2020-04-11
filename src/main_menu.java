@@ -1,10 +1,14 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class main_menu {
     private String input;
+    LinkStack theStack = new LinkStack();
+    private String operators;
 
     public main_menu(){
         input = "2 4 6 * +";
+        operators = "";
     }
 
     private void printMenu(){
@@ -23,16 +27,15 @@ public class main_menu {
         var infix = getter.nextLine();
         input = infix;
         System.out.print("YOU HAVE ENTERED: " +input+ "\n");
-        convertToPostfix();
+        stackIntegers();
     }
 
-    public void convertToPostfix(){
-        LinkStack theStack = new LinkStack();
+    public void stackIntegers(){
         var x = input.split(" ");
         for(var elm:x){
             //System.out.print(elm+"\n");
             if(elm.matches("[()=;{}[\\]+\\-*/&!%^|<>']]")){
-                System.out.print(elm);
+                operators=operators+elm;
             }
             else{
                 int i = Integer.parseInt(elm);
@@ -40,7 +43,8 @@ public class main_menu {
                 theStack.displayStack();
             }
         }
-
+        theStack.displayStack();
+        System.out.print("\n"+ operators+"\n");
     }
 
     public void evalPostfix(){
