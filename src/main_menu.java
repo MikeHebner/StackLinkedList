@@ -22,6 +22,10 @@ public class main_menu {
         System.out.print("YOU HAVE ENTERED: " +input+ "\n");
     }
 
+    public void evalPostfix(){
+        System.out.print("**POSTFIX EVALUATION RESULT**");
+    }
+
     public void runMenu() {
         var getter = new Scanner(System.in);
         while(true){
@@ -33,7 +37,7 @@ public class main_menu {
                     readIn();
                     break;
                 case 2:
-                    //method
+                    evalPostfix();
                     break;
                 case 0:
                     System.exit(0);
