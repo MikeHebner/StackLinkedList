@@ -16,7 +16,10 @@ public class main_menu {
 
     public void readIn(){
         var getter = new Scanner(System.in);
-        System.out.print("ENTER INFIX EXPRESSION");
+        System.out.print("ENTER INFIX EXPRESSION\nONLY VALID OPERATORS: +,-,*,/\n" +
+                "All OPERANDS MUST BE POSITIVE INTEGERS\n" +
+                "SEPERATE EACH ELEMENT BY A SPACE\n" +
+                "IE: 55 + 4 - 2\n");
         var infix = getter.nextLine();
         input = infix;
         System.out.print("YOU HAVE ENTERED: " +input+ "\n");
