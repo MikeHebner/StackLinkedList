@@ -34,8 +34,10 @@ public class main_menu {
             if(elm.matches("[()=;{}[\\]+\\-*/&!%^|<>']]")){
                 System.out.print(elm);
             }
-            else(){
-
+            else{
+                int i = Integer.parseInt(elm);
+                theStack.push(i);
+                theStack.displayStack();
             }
         }
 
