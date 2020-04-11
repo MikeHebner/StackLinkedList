@@ -48,6 +48,15 @@ public class main_menu {
     }
 
     public void evalPostfix(){
+        while(operators.length()>0){
+            int x = (int) theStack.pop();
+            int y = (int) theStack.pop();
+            var q = operators.charAt(0);
+            operators = operators.substring(1);
+            System.out.print(y+" "+ q +" "+ x);
+
+
+        }
         System.out.print("**POSTFIX EVALUATION RESULT**");
     }
 
