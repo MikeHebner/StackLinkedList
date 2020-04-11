@@ -14,6 +14,14 @@ public class main_menu {
         System.out.println("    [0] EXIT");
     }
 
+    public void readIn(){
+        var getter = new Scanner(System.in);
+        System.out.print("ENTER INFIX EXPRESSION");
+        var infix = getter.nextLine();
+        input = infix;
+        System.out.print("YOU HAVE ENTERED: " +input+ "\n");
+    }
+
     public void runMenu() {
         var getter = new Scanner(System.in);
         while(true){
@@ -22,7 +30,7 @@ public class main_menu {
             getter.nextLine();
             switch(selection){
                 case 1:
-                    //method
+                    readIn();
                     break;
                 case 2:
                     //method
