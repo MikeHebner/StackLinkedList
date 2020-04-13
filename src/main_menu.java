@@ -1,14 +1,15 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class main_menu {
     private String input;
     LinkStack theStack = new LinkStack();
-    private String operators;
+    ArrayList<String> operators = new ArrayList<>();
 
     public main_menu(){
         input = "2 4 6 * +";
-        operators = "";
+        //ArrayList<String> operators = new ArrayList<>();
     }
 
     private void printMenu(){
@@ -24,8 +25,7 @@ public class main_menu {
                 "All OPERANDS MUST BE POSITIVE INTEGERS\n" +
                 "SEPERATE EACH ELEMENT BY A SPACE\n" +
                 "IE: 55 + 4 - 2\n");
-        var infix = getter.nextLine();
-        input = infix;
+        input = getter.nextLine();
         System.out.print("YOU HAVE ENTERED: " +input+ "\n");
         stackIntegers();
     }
@@ -35,7 +35,8 @@ public class main_menu {
         for(var elm:x){
             //System.out.print(elm+"\n");
             if(elm.matches("[()=;{}[\\]+\\-*/&!%^|<>']]")){
-                operators=operators+elm;
+                //operators=operators+elm;
+                operators.add(elm);
             }
             else{
                 int i = Integer.parseInt(elm);
@@ -48,16 +49,36 @@ public class main_menu {
     }
 
     public void evalPostfix(){
-        while(operators.length()>0){
+        while(operators.size()>0){
             int x = (int) theStack.pop();
             int y = (int) theStack.pop();
-            var q = operators.charAt(0);
-            operators = operators.substring(1);
-            System.out.print(y+" "+ q +" "+ x);
-
+            var q = operators.get(0);
+            var result = 0;
+            operators.remove(0);
+            System.out.print(y+" "+ q +" "+ x +"\n");
+            switch(q){
+                case "+":
+                    result = y+x;
+                    break;
+                case "-":
+                    result = y-x;
+                    break;
+                case "*":
+                    result = y*x;
+                    break;
+                case "/":
+                    result = y/x;
+                    break;
+                default:
+                    System.out.print("INVALID INPUT");
+            }
+            theStack.push(result);
+            System.out.print("="+ result+"\n");
 
         }
-        System.out.print("**POSTFIX EVALUATION RESULT**");
+        System.out.print("**POSTFIX EVALUATION RESULT**\n");
+        theStack.displayStack();
+        System.out.print("\n");
     }
 
     public void runMenu() {
