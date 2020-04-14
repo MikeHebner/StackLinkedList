@@ -8,7 +8,6 @@ public class main_menu {
 
     public main_menu(){
         input = "";
-        //ArrayList<String> operators = new ArrayList<>();
     }
 
     private void printMenu(){
