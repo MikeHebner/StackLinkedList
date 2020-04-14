@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class main_menu {
@@ -8,20 +7,21 @@ public class main_menu {
     ArrayList<String> operators = new ArrayList<>();
 
     public main_menu(){
-        input = "2 4 6 * +";
+        input = "";
         //ArrayList<String> operators = new ArrayList<>();
     }
 
     private void printMenu(){
         System.out.println("SELECT AN OPTION FROM THE FOLLOWING MENU:");
-        System.out.println("    [1] Read an expression in postfix notation");
+        System.out.println("    [1] Read in expression in postfix notation");
         System.out.println("    [2] Evaluate the postfix expression");
+        System.out.println("    [3] CLEAR");
         System.out.println("    [0] EXIT");
     }
 
     public void readIn(){
         var getter = new Scanner(System.in);
-        System.out.print("ENTER INFIX EXPRESSION\nONLY VALID OPERATORS: +,-,*,/\n" +
+        System.out.print("ENTER INFIX EXPRESSION\nONLY VALID OPERATORS: +,-,*,/ \n" +
                 "All OPERANDS MUST BE POSITIVE INTEGERS\n" +
                 "SEPERATE EACH ELEMENT BY A SPACE\n" +
                 "IE: 55 + 4 - 2\n");
@@ -33,9 +33,7 @@ public class main_menu {
     public void stackIntegers(){
         var x = input.split(" ");
         for(var elm:x){
-            //System.out.print(elm+"\n");
-            if(elm.matches("[()=;{}[\\]+\\-*/&!%^|<>']]")){
-                //operators=operators+elm;
+            if(elm.matches("[()=;{}[]+\\-*/&!%^|<>']]")){
                 operators.add(elm);
             }
             else{
@@ -93,6 +91,14 @@ public class main_menu {
                     break;
                 case 2:
                     evalPostfix();
+                    break;
+                case 3:
+                    while (!theStack.isEmpty()){
+                        theStack.pop();
+                    }
+                    break;
+                case 4:
+                    theStack.displayStack();
                     break;
                 case 0:
                     System.exit(0);
